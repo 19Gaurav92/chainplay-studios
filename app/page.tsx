@@ -1,225 +1,232 @@
 'use client';
 
 import React from 'react';
-import Head from 'next/head';
-import { Gamepad2, Layers, Cpu, Code2, Smartphone, ShieldCheck, ArrowRight, Wallet, CheckCircle } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Smartphone, Code2, Globe, MonitorPlay, Zap, Shield } from 'lucide-react';
+import ContactForm from '@/components/ContactForm';
 import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-white selection:bg-primary selection:text-background font-sans">
+    <div className="min-h-screen bg-background text-white font-sans overflow-x-hidden">
       
-      {/* --- NAVBAR --- */}
-      <nav className="fixed w-full z-50 bg-background/90 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="text-2xl font-bold tracking-tighter text-white">
-            CHAINPLAY <span className="text-primary">.</span>
+      {/* --- NAVBAR (Glass Effect) --- */}
+      <nav className="fixed w-full z-50 top-0 left-0 border-b border-white/5 bg-black/50 backdrop-blur-lg">
+        <div className="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="text-2xl font-heading font-bold tracking-tight">
+            CHAINPLAY<span className="text-primary">.</span>
           </div>
-          <div className="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-            <a href="#work" className="hover:text-primary transition-colors">Work</a>
-            <a href="#services" className="hover:text-primary transition-colors">Services</a>
-            <a href="#process" className="hover:text-primary transition-colors">Process</a>
+          <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+            <a href="#work" className="hover:text-white transition-colors">Work</a>
+            <a href="#services" className="hover:text-white transition-colors">Expertise</a>
+            <a href="#about" className="hover:text-white transition-colors">Studio</a>
+            <a href="#contact" className="px-5 py-2.5 bg-white text-black font-bold hover:bg-primary transition-colors">
+              Get Quote
+            </a>
           </div>
-          <a href="#contact" className="px-6 py-2 bg-white text-background font-bold text-sm hover:bg-primary transition-colors">
-            Get Quote
-          </a>
         </div>
       </nav>
 
-      {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 border-b border-white/5">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+      {/* --- HERO SECTION (Video Background Style) --- */}
+      <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+        
+        {/* VIDEO BACKGROUND LAYER */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-black/30 z-10" />
+          <div className="absolute inset-0 bg-black/40 z-10" />
+          {/* Using a high-quality Sci-Fi loop as placeholder. Replace src with your game footage later. */}
+          <video 
+            autoPlay loop muted playsInline 
+            className="w-full h-full object-cover scale-110"
+            poster="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=2000"
           >
-            <div className="inline-block px-3 py-1 mb-6 border border-primary/20 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full">
-              Studio-First Development
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-              We Build <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-                Revenue Engines.
-              </span>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-1610-large.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        {/* CONTENT */}
+        <div className="relative z-20 container max-w-[1200px] mx-auto px-6 text-center pt-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="font-heading text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">
+              WE BUILD <br/> WORLDS.
             </h1>
-            <p className="text-lg text-secondary mb-8 max-w-lg leading-relaxed">
-              15 Years Experience. Unity Experts. Native Web3 Integration. 
-              The technical partner for founders targeting a $1M+ exit.
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light">
+              The premier development partner for founders. <br/>
+              <span className="text-white font-medium">Unity Experts. Web3 Native. 15 Years of Excellence.</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#contact" className="px-8 py-4 bg-primary text-background font-bold text-lg hover:bg-white transition-colors flex items-center justify-center gap-2">
-                Request Proposal <ArrowRight size={18} />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="#contact" className="min-w-[200px] px-8 py-5 bg-primary text-black font-bold text-lg hover:bg-white transition-all flex items-center justify-center gap-2 group">
+                Start Project <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#work" className="px-8 py-4 border border-white/20 text-white font-medium hover:bg-white/5 transition-colors text-center">
-                View Case Studies
+              <a href="#work" className="min-w-[200px] px-8 py-5 border border-white/20 hover:bg-white/10 backdrop-blur-sm transition-all text-lg font-medium">
+                View Portfolio
               </a>
             </div>
           </motion.div>
-          
-          {/* Placeholder for Hero Graphic/Game Screenshot */}
-          <div className="relative h-[400px] md:h-[500px] bg-gradient-to-br from-surface to-background border border-white/10 rounded-lg overflow-hidden flex items-center justify-center group">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-            <div className="relative z-10 text-center p-8">
-               <Gamepad2 size={64} className="mx-auto text-primary mb-4" />
-               <p className="font-mono text-sm text-primary tracking-widest">LIVE PREVIEW</p>
+        </div>
+      </section>
+
+      {/* --- STATS MARQUEE (The "Agency" Flex) --- */}
+      <section className="border-y border-white/5 bg-surface/50 backdrop-blur-sm">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
+          {[
+            { label: "Games Shipped", val: "50+" },
+            { label: "Years Exp", val: "15" },
+            { label: "Downloads", val: "10M+" },
+            { label: "Client Rating", val: "4.9/5" }
+          ].map((stat, i) => (
+            <div key={i} className="py-8 text-center">
+              <div className="font-heading text-4xl md:text-5xl font-bold text-white mb-1">{stat.val}</div>
+              <div className="text-xs uppercase tracking-widest text-gray-500">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- SELECTED WORK (Big Imagery) --- */}
+      <section id="work" className="py-32 px-6">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="flex items-end justify-between mb-16">
+            <div>
+              <h2 className="font-heading text-5xl md:text-6xl font-bold mb-4">Selected Work</h2>
+              <p className="text-gray-400">Engineering prowess meets creative chaos.</p>
+            </div>
+            <button className="hidden md:flex items-center gap-2 text-primary border-b border-primary pb-1">View All <ArrowRight size={16}/></button>
+          </div>
+
+          <div className="grid gap-16">
+            {/* PROJECT 1 */}
+            <div className="group cursor-pointer">
+              <div className="relative aspect-video overflow-hidden bg-surface mb-6 border border-white/10">
+                <img 
+                  src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2670&auto=format&fit=crop" 
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                  alt="Project 1"
+                />
+                <div className="absolute top-4 right-4 bg-black/80 backdrop-blur text-xs font-bold px-3 py-1 border border-white/10">MMORPG</div>
+              </div>
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="text-3xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">Neon Odyssey</h3>
+                  <p className="text-gray-400 text-sm">Unity 6 / Multiplayer / Custom Backend</p>
+                </div>
+                <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" size={32}/>
+              </div>
+            </div>
+
+            {/* PROJECT 2 */}
+            <div className="group cursor-pointer">
+              <div className="relative aspect-video overflow-hidden bg-surface mb-6 border border-white/10">
+                <img 
+                  src="https://images.unsplash.com/photo-1614726365723-49cfae9d0d3d?q=80&w=2669&auto=format&fit=crop" 
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                  alt="Project 2"
+                />
+                <div className="absolute top-4 right-4 bg-black/80 backdrop-blur text-xs font-bold px-3 py-1 border border-white/10">WEB3 CASINO</div>
+              </div>
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="text-3xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">Solana Slots</h3>
+                  <p className="text-gray-400 text-sm">React / Web3.js / Smart Contracts</p>
+                </div>
+                <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" size={32}/>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- TRUST BAR --- */}
-      <section className="py-10 border-b border-white/5 bg-surface/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs text-secondary mb-6 tracking-widest uppercase">Trusted Tech Stack</p>
-          <div className="flex flex-wrap justify-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Replace with actual SVGs later */}
-            <span className="text-xl font-bold flex items-center gap-2"><Layers size={20}/> Unity</span>
-            <span className="text-xl font-bold flex items-center gap-2"><CheckCircle size={20}/> Solana</span>
-            <span className="text-xl font-bold flex items-center gap-2"><Wallet size={20}/> MetaMask</span>
-            <span className="text-xl font-bold flex items-center gap-2"><Cpu size={20}/> Node.js</span>
+      {/* --- SERVICES (Clean Grid) --- */}
+      <section id="services" className="py-32 bg-surface/30 px-6">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="col-span-full md:col-span-1 mb-8 md:mb-0">
+              <h2 className="font-heading text-4xl font-bold mb-6">Our <br/>Expertise</h2>
+              <p className="text-gray-400 leading-relaxed mb-8">
+                We bridge the gap between AAA visual fidelity and robust, scalable architecture. 
+                Strict NDAs. Full IP transfer.
+              </p>
+              <a href="#contact" className="text-primary font-bold hover:text-white transition-colors flex items-center gap-2">
+                Download Tech Deck <ArrowRight size={16}/>
+              </a>
+            </div>
+
+            {/* Service Cards */}
+            <div className="p-8 bg-background border border-white/5 hover:border-primary/50 transition-colors group">
+              <Smartphone className="text-primary mb-6" size={32}/>
+              <h3 className="text-xl font-bold mb-3">Mobile & PC</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Native builds for iOS, Android, and Steam using Unity & Unreal. Optimized for performance on low-end devices.
+              </p>
+            </div>
+
+            <div className="p-8 bg-background border border-white/5 hover:border-primary/50 transition-colors group">
+              <Globe className="text-primary mb-6" size={32}/>
+              <h3 className="text-xl font-bold mb-3">Web3 & Blockchain</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Seamless wallet integration, smart contract development, and tokenomics logic for Play-to-Earn economies.
+              </p>
+            </div>
+
+            <div className="p-8 bg-background border border-white/5 hover:border-primary/50 transition-colors group">
+              <MonitorPlay className="text-primary mb-6" size={32}/>
+              <h3 className="text-xl font-bold mb-3">Live Ops</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Post-launch support, server scaling, and real-time analytics dashboards to monitor player retention.
+              </p>
+            </div>
+
+            <div className="p-8 bg-background border border-white/5 hover:border-primary/50 transition-colors group">
+              <Zap className="text-primary mb-6" size={32}/>
+              <h3 className="text-xl font-bold mb-3">Rapid Prototyping</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                MVP development in 4-6 weeks to validate core loops before committing to full-scale production.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* --- ABOUT SECTION (The Copy We Wrote) --- */}
-      <section className="py-24 px-6 bg-background">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">Engineering Play. Architecting Value.</h2>
-          <div className="space-y-6 text-secondary text-lg leading-relaxed">
-            <p>
-              At <strong className="text-white">ChainPlay Studios</strong>, we do not just build games; we engineer digital assets. 
-              Founded on a bedrock of 15 years of industry experience, our studio was established to solve the fragmentation in the market: 
-              the gap between high-fidelity gaming experiences and robust, secure blockchain infrastructure.
+      {/* --- CONTACT (Split Layout) --- */}
+      <section id="contact" className="relative py-32 px-6 overflow-hidden">
+        {/* Decorative BG */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full opacity-20 pointer-events-none"></div>
+
+        <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+          <div>
+            <h2 className="font-heading text-5xl md:text-7xl font-bold mb-6">Let's Build <br/> The Future.</h2>
+            <p className="text-xl text-gray-400 mb-8">
+              Ready to deploy? We accept projects starting at $5k. <br/>
+              Strict NDA provided upon request.
             </p>
-            <p>
-              We operate as a silent engine behind successful founders. We respect the sanctity of intellectual property; 
-              we work under strict NDAs, ensuring your vision remains yours, while the execution becomes our masterpiece.
-            </p>
+            <div className="flex flex-col gap-4 text-sm text-gray-500">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/10">
+                  <Shield size={16} className="text-primary"/>
+                </div>
+                <span>100% IP Ownership Transfer</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/10">
+                  <Code2 size={16} className="text-primary"/>
+                </div>
+                <span>Clean, Documented Codebase</span>
+              </div>
+            </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 mt-16 text-left">
-            <div className="p-6 border border-white/5 bg-surface/20">
-              <h3 className="text-primary font-bold text-xl mb-2">15-Year Pedigree</h3>
-              <p className="text-secondary text-sm">We navigated the mobile revolution, and now we are defining the Web3 expansion. Mature, tested codebases.</p>
-            </div>
-            <div className="p-6 border border-white/5 bg-surface/20">
-              <h3 className="text-primary font-bold text-xl mb-2">Protocol Agnostic</h3>
-              <p className="text-secondary text-sm">Whether deploying on Solana or BNB, our integration logic is flawless, but gameplay always comes first.</p>
-            </div>
-            <div className="p-6 border border-white/5 bg-surface/20">
-              <h3 className="text-primary font-bold text-xl mb-2">Founder Centric</h3>
-              <p className="text-secondary text-sm">We don't need hand-holding. Give us the vision, and we deliver the build ready for launch.</p>
-            </div>
+
+          <div className="bg-surface/50 p-1 border border-white/10 rounded-2xl backdrop-blur-md">
+            <ContactForm />
           </div>
         </div>
       </section>
 
-      {/* --- SERVICES GRID --- */}
-      <section id="services" className="py-24 px-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold mb-4">Core Capabilities</h2>
-            <div className="h-1 w-20 bg-primary"></div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="group p-8 bg-surface/40 hover:bg-surface border border-white/5 transition-all duration-300">
-              <Smartphone className="text-primary mb-6" size={40} />
-              <h3 className="text-2xl font-bold mb-4">Mobile Game Core</h3>
-              <ul className="space-y-3 text-secondary">
-                <li className="flex gap-2"><CheckCircle size={16} className="text-primary"/> iOS & Android Native Builds</li>
-                <li className="flex gap-2"><CheckCircle size={16} className="text-primary"/> Unity Engine Optimization</li>
-                <li className="flex gap-2"><CheckCircle size={16} className="text-primary"/> Addictive Core Loops</li>
-              </ul>
-            </div>
-
-            {/* Service 2 */}
-            <div className="group p-8 bg-surface/40 hover:bg-surface border border-white/5 transition-all duration-300">
-              <Code2 className="text-success mb-6" size={40} />
-              <h3 className="text-2xl font-bold mb-4">Web3 Infrastructure</h3>
-              <ul className="space-y-3 text-secondary">
-                <li className="flex gap-2"><CheckCircle size={16} className="text-success"/> Wallet Integration (MetaMask)</li>
-                <li className="flex gap-2"><CheckCircle size={16} className="text-success"/> Smart Contract Linking</li>
-                <li className="flex gap-2"><CheckCircle size={16} className="text-success"/> Tokenomics Logic</li>
-              </ul>
-            </div>
-
-            {/* Service 3 */}
-            <div className="group p-8 bg-surface/40 hover:bg-surface border border-white/5 transition-all duration-300">
-              <ShieldCheck className="text-blue-400 mb-6" size={40} />
-              <h3 className="text-2xl font-bold mb-4">Backend Systems</h3>
-              <ul className="space-y-3 text-secondary">
-                <li className="flex gap-2"><CheckCircle size={16} className="text-blue-400"/> Multiplayer Server Scaling</li>
-                <li className="flex gap-2"><CheckCircle size={16} className="text-blue-400"/> LiveOps Dashboard</li>
-                <li className="flex gap-2"><CheckCircle size={16} className="text-blue-400"/> Secure Database Mgmt</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- CONTACT FORM --- */}
-      <section id="contact" className="py-24 px-6 bg-surface/20 border-t border-white/5">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Start Your Build</h2>
-            <p className="text-secondary">Projects starting from $5k. Strict NDA included.</p>
-          </div>
-
-          <form className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-secondary uppercase">Name</label>
-                <input type="text" className="w-full bg-background border border-white/10 p-4 text-white focus:border-primary focus:outline-none" placeholder="Founder Name" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-secondary uppercase">Email</label>
-                <input type="email" className="w-full bg-background border border-white/10 p-4 text-white focus:border-primary focus:outline-none" placeholder="work@company.com" />
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-secondary uppercase">Project Type</label>
-                <select className="w-full bg-background border border-white/10 p-4 text-white focus:border-primary focus:outline-none appearance-none">
-                  <option>Full Game Build (Mobile)</option>
-                  <option>Web3 / Crypto Integration</option>
-                  <option>Backend Infrastructure</option>
-                  <option>Prototype / MVP</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-secondary uppercase">Budget Range</label>
-                <select className="w-full bg-background border border-white/10 p-4 text-white focus:border-primary focus:outline-none appearance-none">
-                  <option>$5k - $15k</option>
-                  <option>$15k - $30k</option>
-                  <option>$30k +</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-secondary uppercase">Project Details</label>
-              <textarea rows={4} className="w-full bg-background border border-white/10 p-4 text-white focus:border-primary focus:outline-none" placeholder="Describe your game concept and technical requirements..."></textarea>
-            </div>
-
-            <button className="w-full bg-primary text-background font-bold py-5 text-lg hover:bg-white transition-colors">
-              Submit Request
-            </button>
-            
-            <p className="text-center text-xs text-secondary mt-4">
-              By submitting, you agree to our privacy policy. An NDA will be provided upon initial reply.
-            </p>
-          </form>
-        </div>
-      </section>
-
-      {/* --- FOOTER --- */}
-      <footer className="py-12 border-t border-white/10 text-center">
-        <p className="text-secondary text-sm">© {new Date().getFullYear()} ChainPlay Studios. All rights reserved.</p>
+      <footer className="py-8 border-t border-white/5 text-center text-gray-600 text-sm">
+        <p>© 2026 ChainPlay Studios. All rights reserved.</p>
       </footer>
-
     </div>
   );
 }

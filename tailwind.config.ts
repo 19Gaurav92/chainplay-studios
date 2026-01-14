@@ -8,17 +8,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "#0B1120", // Deep Midnight Blue
-        surface: "#1E293B",    // Lighter Slate for cards
-        primary: "#FCD34D",    // Electric Gold (Accent)
-        secondary: "#64748B",  // Slate Grey (Text)
-        success: "#14F195",    // Solana Green (Crypto hints)
-      },
       fontFamily: {
-        sans: ['var(--font-inter)'],
-        heading: ['var(--font-space)'], // You can add fonts later
+        // This connects to the fonts we set in layout.tsx
+        heading: ["var(--font-syne)", "sans-serif"],
+        sans: ["var(--font-outfit)", "sans-serif"],
       },
+      colors: {
+        background: "#050505", // Darker, pure black
+        primary: "#EAB308",    // Gold/Yellow like Juego
+        surface: "#121212",
+      },
+      animation: {
+        'spin-slow': 'spin 12s linear infinite',
+      }
     },
   },
   plugins: [],
